@@ -1,0 +1,19 @@
+<mat-toolbar>
+  <div class="logo">
+    <span>ZenduForms</span>
+  </div>
+  <div class="menu">
+    <button mat-flat-button *ngFor="let item of menuItems" [class.active]="activeRoute?.includes(item.name.toLowerCase())">
+      <mat-icon>{{ item.icon }}</mat-icon>
+      <div>{{ item.name }}</div>
+    </button>
+  </div>
+  <div class="actions">
+    <button mat-icon-button>
+      <mat-icon>notifications</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

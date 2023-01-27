@@ -1,0 +1,32 @@
+app-header {
+  mat-toolbar.mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--primary);
+    padding: 0 32px;
+    color: var(--white);
+    height: 72px;
+
+    .logo {
+      font-weight: 700;
+      font-size: 32px;
+    }
+
+    .menu {
+      display: flex;
+      gap: 16px;
+
+      button {
+        height: 72px;
+        font-size: 18px;
+        background-color: var(--primary);
+        color: var(--white);
+
+        &:hover,
+        &.active {
+          background-color: var(--hover);
+        }
+      }
+    }
+  }
+}
