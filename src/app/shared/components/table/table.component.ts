@@ -1,7 +1,8 @@
-import { Component, Input, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
+import { SubmissionInterface } from '../../interfaces/submission.interface';
 
 @Component({
   selector: 'app-table',
@@ -9,23 +10,27 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./table.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class TableComponent {
+export class TableComponent implements AfterViewInit, OnChanges {
   @Input() config!: { name: string; displayName: string; customClass?: string; type?: string; }[];
-  @Input() data!: any[];
+  @Input() data!: SubmissionInterface[];
   @Input() pageSize: number = 10;
 
   @ViewChild('paginator', { static: true }) paginator!: MatPaginator;
 
   dataSource!: MatTableDataSource<unknown>;
   displayedColumns: string[] = [];
-  selection = new SelectionModel<any>(true, []);
+  selection = new SelectionModel<SubmissionInterface>(true, []);
 
   ngOnChanges() {
     this.displayedColumns = this.config.map((value) => value.name);
     if (this.data?.length) {
-      this.selection.select(...this.data.filter((value: { checked: boolean }) => value?.checked));
+      this.selection.select(...this.data.filter((value) => value?.checked));
     }
       this.dataSource = new MatTableDataSource<unknown>(this.data);
+    if (this.paginator) {
+      this.paginator.firstPage();
+      this.dataSource.paginator = this.paginator;
+    }
   }
 
   ngAfterViewInit() {
@@ -44,17 +49,10 @@ export class TableComponent {
       return;
     }
 
-    this.selection.select(...(this.data as unknown[]));
+    this.selection.select(...(this.data));
   }
 
-  toggleOneRow(row: unknown): void {
+  toggleOneRow(row: SubmissionInterface): void {
     this.selection.toggle(row);
-  }
-
-  checkboxLabel(row?: { position: string }): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
 }

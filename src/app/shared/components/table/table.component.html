@@ -7,7 +7,6 @@
             (change)="$event ? toggleAllRows() : null"
             [checked]="selection.hasValue() && isAllSelected()"
             [indeterminate]="selection.hasValue() && !isAllSelected()"
-            [aria-label]="checkboxLabel()"
         >
         </mat-checkbox>
       </th>
@@ -16,7 +15,6 @@
             (click)="$event.stopPropagation()"
             (change)="$event ? toggleOneRow(row) : null"
             [checked]="selection.isSelected(row)"
-            [aria-label]="checkboxLabel(row)"
             [class.mat-checkbox-disabled]="row?.disabled"
             [disabled]="row?.disabled"
         >

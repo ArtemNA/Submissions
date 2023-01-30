@@ -10,6 +10,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; font-size: 
   border: 1px solid;
   border-radius: 4px;
   align-items: center;
+  white-space: nowrap;
 
   .marker {
     height: 12px;

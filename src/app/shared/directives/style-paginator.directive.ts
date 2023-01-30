@@ -1,10 +1,10 @@
-import { AfterViewInit, Directive, Host, Input, OnChanges, Optional, Renderer2, Self, SimpleChanges, ViewContainerRef, } from '@angular/core';
+import { AfterViewInit, Directive, DoCheck, Host, Input, Optional, Renderer2, Self, ViewContainerRef, } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 
 @Directive({
   selector: '[appStylePaginator]',
 })
-export class StylePaginatorDirective implements AfterViewInit, OnChanges {
+export class StylePaginatorDirective implements AfterViewInit, DoCheck {
   @Input() public currentPage!: number;
   public directiveLoaded = false;
   public pageGapTxt = '...';
@@ -23,7 +23,7 @@ export class StylePaginatorDirective implements AfterViewInit, OnChanges {
     }, 500);
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngDoCheck(): void {
     if (this.directiveLoaded)
       this.initPageRange();
   }

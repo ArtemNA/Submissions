@@ -24,6 +24,10 @@ import { StylePaginatorDirective } from './shared/directives/style-paginator.dir
 import { TableComponent } from './shared/components/table/table.component';
 import { StatusBadgePipe } from './shared/pipes/status-badge.pipe';
 import { WarningByConditionPipe } from './shared/pipes/warning-by-condition.pipe';
+import { FormsModule } from '@angular/forms';
+import { MarkerListComponent } from './shared/components/marker-list/marker-list.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { ResizeDirective } from './shared/directives/resize.directive';
 
 @NgModule({
   declarations: [
@@ -34,6 +38,8 @@ import { WarningByConditionPipe } from './shared/pipes/warning-by-condition.pipe
     TableComponent,
     StatusBadgePipe,
     WarningByConditionPipe,
+    MarkerListComponent,
+    ResizeDirective,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,9 @@ import { WarningByConditionPipe } from './shared/pipes/warning-by-condition.pipe
     HttpClientModule,
     MatTableModule,
     MatCheckboxModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FormsModule,
+    GoogleMapsModule
   ],
   providers: [{
     provide: MatPaginatorIntl,

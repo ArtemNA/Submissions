@@ -1,0 +1,28 @@
+<div class="marker-list-container">
+  <div class="marker-list">
+    <div class="marker-list-item" *ngFor="let item of data">
+      <div class="row">
+        <div class="title">{{ item.task }}</div>
+        <div class="status" [innerHTML]="item.status | statusBadge"></div>
+      </div>
+      <div class="row">
+        From:&nbsp;<div class="details">{{ item.from }}</div>
+      </div>
+      <div class="row">
+        To:&nbsp;<div class="details">{{ item.to }}</div>
+      </div>
+      <div class="row">
+        Due Date:&nbsp;<div class="details" [innerHTML]="item.date | warningByCondition"></div>
+      </div>
+    </div>
+  </div>
+  <div class="map" appResize (newSize)="resize($event)">
+    <google-map [height]="config.height"
+                [width]="config.width"
+                [center]="config.center"
+                [zoom]="config.zoom"
+                (mapClick)="moveMap($event)"
+                (mapMousemove)="move($event)">
+    </google-map>
+  </div>
+</div>

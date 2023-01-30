@@ -14,7 +14,7 @@ export class WarningByConditionPipe implements PipeTransform {
     let color: string | null;
     switch (true) {
       case text.toLowerCase().includes('2'):
-        color = 'red';
+        color = getComputedStyle(document.body).getPropertyValue('--error');
         break;
       default:
         color = null;

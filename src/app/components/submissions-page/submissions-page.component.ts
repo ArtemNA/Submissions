@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TableDataMock } from '../../mocks/tableData.mock';
+import { StatusBageType } from '../../shared/pipes/status-badge.pipe';
 
 @Component({
   selector: 'app-submissions-page',
@@ -20,11 +21,20 @@ export class SubmissionsPageComponent {
     { name: 'date', displayName: 'Due Date', type: 'date' },
   ];
   data = TableDataMock;
+  filteredData = [...this.data];
+  pageSize: number = 10;
+
+  statusList = ['All', ...Object.values(StatusBageType)];
+  tab: 'list' | 'map' = 'list';
 
   constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer){
     this.matIconRegistry.addSvgIcon(
       `paper_download`,
       this.domSanitizer.bypassSecurityTrustResourceUrl(`./../../../../assets/icons/paperDownload.svg`)
     );
+  }
+
+  statusChange(event: string) {
+    this.filteredData = [...this.data].filter(item => event === 'All' || event === item.status);
   }
 }

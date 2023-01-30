@@ -1,0 +1,52 @@
+.marker-list-container {
+  display: flex;
+  font-size: 16px;
+  gap: 40px;
+  width: 100%;
+  max-height: calc(100vh - 270px);
+
+  .marker-list {
+    overflow-y: auto;
+    max-width: 460px;
+    min-width: 400px;
+
+    .marker-list-item {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 16px;
+      margin-bottom: 8px;
+
+      .row {
+        display: flex;
+        color: var(--border);
+
+        &:first-child {
+          justify-content: space-between;
+        }
+
+        &:not(&:last-child) {
+          margin-bottom: 8px;
+        }
+
+        &:last-child div {
+          font-weight: 500;
+        }
+
+        div {
+          color: var(--black);
+
+          &.title {
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 140%;
+          }
+        }
+      }
+    }
+  }
+
+  .map {
+    //width: 60%;
+    flex: 1 1 100%;
+  }
+}
