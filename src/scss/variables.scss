@@ -1,9 +1,18 @@
 :root {
   --primary: #2188D9;
+  --primary1000: #F1F5F8;
   --white: #ffffff;
   --hover: #1773BB;
   --table: #ECECED;
   --black: #060C1B;
+  --border: #B8B9BC;
+  --disable: #D0D0D2;
+  --success: #53D86A;
+  --success-light: #D7E5DA;
+  --error: #FF3D00;
+  --error-light: rgba(255, 61, 0, 0.1);
 
   --shadow-1: 0 2px 10px rgba(6, 12, 27, 0.1);
+
+  --mdc-typography-body2-font-size: 16px;
 }

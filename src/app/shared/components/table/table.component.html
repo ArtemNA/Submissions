@@ -1,0 +1,51 @@
+<table mat-table #table [dataSource]="dataSource" class="w-full">
+  <ng-container [matColumnDef]="col.name" *ngFor="let col of config">
+
+    <ng-container *ngIf="col.type === 'select'; else primaryColumn">
+      <th mat-header-cell class="flex-grow-0" *matHeaderCellDef [class]="col?.customClass">
+        <mat-checkbox
+            (change)="$event ? toggleAllRows() : null"
+            [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()"
+            [aria-label]="checkboxLabel()"
+        >
+        </mat-checkbox>
+      </th>
+      <td mat-cell class="flex-grow-0" *matCellDef="let row" [class]="col?.customClass">
+        <mat-checkbox
+            (click)="$event.stopPropagation()"
+            (change)="$event ? toggleOneRow(row) : null"
+            [checked]="selection.isSelected(row)"
+            [aria-label]="checkboxLabel(row)"
+            [class.mat-checkbox-disabled]="row?.disabled"
+            [disabled]="row?.disabled"
+        >
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container *ngIf="col.type === 'badge'; else primaryColumn">
+      <th mat-header-cell *matHeaderCellDef [class]="col?.customClass"> {{ col.displayName }} </th>
+      <td mat-cell *matCellDef="let element" [class]="col?.customClass">
+        <span [innerHTML]="element[col.name] | statusBadge"></span>
+      </td>
+    </ng-container>
+
+    <ng-container *ngIf="col.type === 'date'; else primaryColumn">
+      <th mat-header-cell *matHeaderCellDef [class]="col?.customClass"> {{ col.displayName }} </th>
+      <td mat-cell *matCellDef="let element" [class]="col?.customClass">
+        <span [innerHTML]="element[col.name] | warningByCondition"></span>
+      </td>
+    </ng-container>
+
+    <ng-template #primaryColumn>
+      <th mat-header-cell *matHeaderCellDef [class]="col?.customClass"> {{ col.displayName }} </th>
+      <td mat-cell *matCellDef="let element" [class]="col?.customClass">
+        <span>{{ element[col.name] }}</span>
+      </td>
+    </ng-template>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns" class="element-row"></tr>
+</table>
+<mat-paginator [pageSize]="pageSize" hidePageSize appStylePaginator [currentPage]="paginator.pageIndex" #paginator></mat-paginator>

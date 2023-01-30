@@ -19,16 +19,26 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { CustomMatPaginatorIntl } from './shared/utils/custom-mat-paginator-intl';
+import { CommonModule } from '@angular/common';
+import { StylePaginatorDirective } from './shared/directives/style-paginator.directive';
+import { TableComponent } from './shared/components/table/table.component';
+import { StatusBadgePipe } from './shared/pipes/status-badge.pipe';
+import { WarningByConditionPipe } from './shared/pipes/warning-by-condition.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     SubmissionsPageComponent,
-    HeaderComponent
+    HeaderComponent,
+    StylePaginatorDirective,
+    TableComponent,
+    StatusBadgePipe,
+    WarningByConditionPipe,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CommonModule,
     AppRoutingModule,
     MatToolbarModule,
     MatIconModule,

@@ -2,4 +2,21 @@
 @import url(./scss/variables.scss);
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; font-size: 16px; }
+
+.status-bage {
+  display: inline-flex;
+  padding: 4px 16px 4px 24px;
+  border: 1px solid;
+  border-radius: 4px;
+  align-items: center;
+
+  .marker {
+    height: 12px;
+    font-size: 3em;
+    overflow: hidden;
+    line-height: 14px;
+    padding-right: 8px;
+    margin-left: -8px;
+  }
+}
