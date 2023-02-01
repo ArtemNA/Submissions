@@ -1,28 +1,31 @@
 <div class="marker-list-container">
   <div class="marker-list">
-    <div class="marker-list-item" *ngFor="let item of data">
+    <div class="marker-list-item" *ngFor="let item of list">
       <div class="row">
-        <div class="title">{{ item.task }}</div>
-        <div class="status" [innerHTML]="item.status | statusBadge"></div>
+        <div class="title">{{ item?.task }}</div>
+        <div class="status" [innerHTML]="item?.status | statusBadge"></div>
       </div>
       <div class="row">
-        From:&nbsp;<div class="details">{{ item.from }}</div>
+        From:&nbsp;<div class="details">{{ item?.from }}</div>
       </div>
       <div class="row">
-        To:&nbsp;<div class="details">{{ item.to }}</div>
+        To:&nbsp;<div class="details">{{ item?.to }}</div>
       </div>
       <div class="row">
-        Due Date:&nbsp;<div class="details" [innerHTML]="item.date | warningByCondition"></div>
+        Due Date:&nbsp;<div class="details" [innerHTML]="item?.date | warningByCondition"></div>
       </div>
     </div>
   </div>
-  <div class="map" appResize (newSize)="resize($event)">
-    <google-map [height]="config.height"
-                [width]="config.width"
-                [center]="config.center"
-                [zoom]="config.zoom"
-                (mapClick)="moveMap($event)"
-                (mapMousemove)="move($event)">
+  <div class="map">
+    <google-map
+        height="100%"
+        width="100%"
+        [center]="config.center"
+        [zoom]="config.zoom"
+    >
+      <map-marker *ngFor="let markerPosition of markerPositions"
+                  [position]="markerPosition"
+                  [options]="markerOptions"></map-marker>
     </google-map>
   </div>
 </div>

@@ -2,13 +2,14 @@
   display: flex;
   font-size: 16px;
   gap: 40px;
-  width: 100%;
   max-height: calc(100vh - 270px);
+  min-height: calc(100vh - 500px);
 
   .marker-list {
     overflow-y: auto;
     max-width: 460px;
-    min-width: 400px;
+    min-width: 300px;
+    width: 33%;
 
     .marker-list-item {
       border: 1px solid var(--border);
@@ -22,6 +23,7 @@
 
         &:first-child {
           justify-content: space-between;
+          gap: 10px;
         }
 
         &:not(&:last-child) {
@@ -46,7 +48,6 @@
   }
 
   .map {
-    //width: 60%;
-    flex: 1 1 100%;
+    width: 66%;
   }
 }

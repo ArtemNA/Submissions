@@ -10,7 +10,8 @@ export class WarningByConditionPipe implements PipeTransform {
 
   constructor(private sanitizer: DomSanitizer) { }
 
-  transform(text: string): SafeHtml {
+  transform(text?: string): SafeHtml {
+    if (!text) return '';
     let color: string | null;
     switch (true) {
       case text.toLowerCase().includes('2'):

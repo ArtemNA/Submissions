@@ -15,7 +15,8 @@ export class StatusBadgePipe implements PipeTransform {
 
   constructor(private sanitizer: DomSanitizer) { }
 
-  transform(status: StatusBageType): SafeHtml {
+  transform(status?: StatusBageType): SafeHtml {
+    if (!status) return '';
     let bgColor: string | null;
     let color: string | null;
     switch (status) {

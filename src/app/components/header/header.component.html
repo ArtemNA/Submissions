@@ -3,7 +3,7 @@
     <span>ZenduForms</span>
   </div>
   <div class="menu">
-    <button mat-flat-button *ngFor="let item of menuItems" [class.active]="activeRoute?.includes(item.name.toLowerCase())">
+    <button mat-flat-button *ngFor="let item of menuItems" [class.active]="activeRoute.includes(item.name.toLowerCase())">
       <mat-icon>{{ item.icon }}</mat-icon>
       <div>{{ item.name }}</div>
     </button>

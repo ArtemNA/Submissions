@@ -37,7 +37,7 @@ export class HeaderComponent {
     },
   ]
 
-  activeRoute!: string;
+  activeRoute: string = '';
 
 
   constructor(private readonly router: Router) {

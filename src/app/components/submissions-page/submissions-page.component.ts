@@ -26,15 +26,40 @@ export class SubmissionsPageComponent {
 
   statusList = ['All', ...Object.values(StatusBageType)];
   tab: 'list' | 'map' = 'list';
+  activeStatusFilter: string | undefined;
+  activeSearchFilter: string | undefined;
 
-  constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer){
+  constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
     this.matIconRegistry.addSvgIcon(
       `paper_download`,
       this.domSanitizer.bypassSecurityTrustResourceUrl(`./../../../../assets/icons/paperDownload.svg`)
     );
+    this.matIconRegistry.addSvgIcon(
+      `calendar_outline`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`./../../../../assets/icons/calendarOutline.svg`)
+    );
   }
 
-  statusChange(event: string) {
-    this.filteredData = [...this.data].filter(item => event === 'All' || event === item.status);
+  statusChange(event: string): void {
+    this.activeStatusFilter = event;
+    this.filterData();
+  }
+
+  search(event: string): void {
+    this.activeSearchFilter = event;
+    this.filterData();
+  }
+
+  private filterData(): void {
+    this.filteredData = [...this.data]
+      .filter(item => (this.activeStatusFilter === 'All' || !this.activeStatusFilter) || this.activeStatusFilter === item.status)
+      .filter(({ task, from, to, address }) => {
+        return !this.activeSearchFilter
+          ? true
+          : Object.values({ task, from, to, address })
+            .join(' ')
+            .toLowerCase()
+            .includes(this.activeSearchFilter.toLowerCase());
+      });
   }
 }

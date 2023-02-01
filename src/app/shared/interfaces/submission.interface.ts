@@ -8,4 +8,5 @@ export interface SubmissionInterface {
   address: string;
   date: string;
   checked?: boolean;
+  marker?: google.maps.LatLngLiteral;
 }

@@ -27,7 +27,6 @@ import { WarningByConditionPipe } from './shared/pipes/warning-by-condition.pipe
 import { FormsModule } from '@angular/forms';
 import { MarkerListComponent } from './shared/components/marker-list/marker-list.component';
 import { GoogleMapsModule } from '@angular/google-maps';
-import { ResizeDirective } from './shared/directives/resize.directive';
 
 @NgModule({
   declarations: [
@@ -39,7 +38,6 @@ import { ResizeDirective } from './shared/directives/resize.directive';
     StatusBadgePipe,
     WarningByConditionPipe,
     MarkerListComponent,
-    ResizeDirective,
   ],
   imports: [
     BrowserModule,

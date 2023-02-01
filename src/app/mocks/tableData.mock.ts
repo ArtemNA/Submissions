@@ -31,7 +31,11 @@ export const TableDataMock = [
     from: 'lisa@zendu.com',
     to: 'jack@zenduit.com',
     address: '1111 Market St. San Francisco, California 94102',
-    date: 'Jan 3, 12:00 PM'
+    date: 'Jan 3, 12:00 PM',
+    marker: {
+      lat: 37.78010251824298,
+      lng: -122.41267088650498
+    }
   },
   {
     task: 'Work Flow: Develop New Website',
@@ -39,7 +43,11 @@ export const TableDataMock = [
     from: 'peter@zendu.com',
     to: 'susan@zenduit.com',
     address: '2222 Market St. San Francisco, California 94102',
-    date: 'Jan 4, 1:00 PM'
+    date: 'Jan 4, 1:00 PM',
+    marker: {
+      lat: 37.76581325622121,
+      lng: -122.43205127357557
+    }
   },
   {
     task: 'Work Flow: Manage Social Media Accounts',
@@ -47,7 +55,11 @@ export const TableDataMock = [
     from: 'jessica@zendu.com',
     to: 'brad@zenduit.com',
     address: '3333 Market St. San Francisco, California 94102',
-    date: 'Jan 5, 2:00 PM'
+    date: 'Jan 5, 2:00 PM',
+    marker: {
+      lat: 37.75839959534103,
+      lng: -122.44354708891586
+    }
   },
   {
     task: 'Work Flow: Analyze Customer Feedback',
@@ -55,7 +67,11 @@ export const TableDataMock = [
     from: 'kim@zendu.com',
     to: 'tom@zenduit.com',
     address: '4444 Market St. San Francisco, California 94102',
-    date: 'Jan 6, 3:00 PM'
+    date: 'Jan 6, 3:00 PM',
+    marker: {
+      lat: 37.76326128642059,
+      lng: -122.43458847357584
+    }
   },
   {
     task: 'Work Flow: Update Accounting System',
@@ -63,7 +79,11 @@ export const TableDataMock = [
     from: 'brian@zendu.com',
     to: 'katie@zenduit.com',
     address: '5555 Market St. San Francisco, California 94102',
-    date: 'Jan 7, 4:00 PM'
+    date: 'Jan 7, 4:00 PM',
+    marker: {
+      lat: 37.76262840583616,
+      lng: -122.4358222312458
+    }
   },
   {
     task: 'Work Flow: Evaluate Employee Performance',
@@ -87,7 +107,11 @@ export const TableDataMock = [
     from: 'kelly@zendu.com',
     to: 'scott@zenduit.com',
     address: '8888 Market St. San Francisco, California 94102',
-    date: 'Jan 10, 7:00 PM'
+    date: 'Jan 10, 7:00 PM',
+    marker: {
+      lat: 37.77765549995982,
+      lng: -122.41627300241034
+    }
   },
   {
     task: 'Work Flow: Update Human Resources Policy',
@@ -95,7 +119,11 @@ export const TableDataMock = [
     from: 'cathy@zendu.com',
     to: 'jake@zenduit.com',
     address: '9999 Market St. San Francisco, California 94102',
-    date: 'Jan 11, 8:00 PM'
+    date: 'Jan 11, 8:00 PM',
+    marker: {
+      lat: 37.78010251824298,
+      lng:  -122.41267088650498
+    }
   },
   {
     task: 'Work Flow: Prepare Financial Statements',

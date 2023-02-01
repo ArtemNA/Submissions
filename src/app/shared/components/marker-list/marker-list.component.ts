@@ -7,11 +7,6 @@ import { SubmissionInterface } from '../../interfaces/submission.interface';
   styleUrls: ['./marker-list.component.scss']
 })
 export class MarkerListComponent {
-  @Input() data!: SubmissionInterface[];
-
-  ngOnInit(): void {}
-  display: any;
-
   config = {
     center: {
       lat: 24,
@@ -21,16 +16,20 @@ export class MarkerListComponent {
     height: '500px',
     width: '500px'
   };
+  markerOptions: google.maps.MarkerOptions = {
+    draggable: false
+  };
+  markerPositions!: google.maps.LatLngLiteral[];
+  list!: SubmissionInterface[];
+  @Input() set data (value: SubmissionInterface[]) {
+    this.list = value;
+    this.markerPositions = this.getMarkers();
+    this.config.zoom = this.markerPositions.length ? 16 : this.config.zoom;
+    this.config.center = this.markerPositions[0];
+  };
 
-  moveMap(event: google.maps.MapMouseEvent): void {
-    if (event.latLng != null) this.config.center = (event.latLng.toJSON());
-  }
-  move(event: google.maps.MapMouseEvent): void {
-    if (event.latLng != null) this.display = event.latLng.toJSON();
-  }
-
-  resize(event: { width: string, height: string }): void {
-    this.config.width = event.width;
-    this.config.height = event.height;
+  private getMarkers(): google.maps.LatLngLiteral[] {
+    const markers = this.list?.filter(item => item.marker && Object.values(item.marker).length).map(item => item.marker);
+    return Object.values(markers).filter((item): item is google.maps.LatLngLiteral => !!item);
   }
 }
